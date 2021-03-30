@@ -12,7 +12,7 @@ function DisplayBalances(props) {
         </Grid.Column>
         <Grid.Column>
           <DisplayBalance title="Expenses" value="500,21" color="red"/>
-        </Grid.Column>z
+        </Grid.Column>
       </Grid.Row>
     </Grid>
   </Segment>
