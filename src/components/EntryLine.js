@@ -1,7 +1,11 @@
 import React from 'react';
 import { Grid, Icon, Segment } from 'semantic-ui-react';
 
-function EntryLine({ description, value, isExpense = false }) {
+function EntryLine(
+  //Destructuring all values from inside that entry at once
+  // { entry:
+  //   { id, description, value, isExpense = false, deleteEntry }}
+    { id, description, value, isExpense = false, deleteEntry }) {
   return (
   <Segment color={isExpense ? 'red' : 'green'}>
     <Grid columns={3} textAlign="right">
@@ -14,7 +18,7 @@ function EntryLine({ description, value, isExpense = false }) {
         </Grid.Column>
         <Grid.Column width={5}>
           <Icon name="edit" bordered></Icon>
-          <Icon name="trash" bordered></Icon>
+          <Icon name="trash" bordered onClick={() => deleteEntry(id)}></Icon>
         </Grid.Column>
       </Grid.Row>
     </Grid>
