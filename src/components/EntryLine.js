@@ -17,7 +17,7 @@ function EntryLine(
           {description}
           </Grid.Column>
           <Grid.Column width={3} textAlign="center">
-            {value}
+            ${value}
           </Grid.Column>
           <Grid.Column width={5}>
             <Icon name="edit" bordered onClick={()=>editEntry(id)}></Icon>

@@ -10,7 +10,7 @@ function DisplayBalance({title, value, color="black", size="tiny" }) {
         {title}
       </Statistic.Label>
       <Statistic.Value>
-        {value}
+        ${value}
       </Statistic.Value>
     </Statistic>
   );
