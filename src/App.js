@@ -13,11 +13,23 @@ function App() {
   const [description, setDescription] = useState("");
   const [value, setValue] = useState("");
   const [isExpense, setIsExpense] = useState(true);
-  const [ isOpen, setIsOpen ] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   function deleteEntry(id) {
     const result = entries.filter((entry) => entry.id !== id);
     setEntries(result);
+  }
+
+  function editEntry(id) {
+    console.log(`edit entry with id ${id}`);
+    if (id) {
+      const index = entries.findIndex(entry => entry.id === id);
+      const entry = entries[index]; 
+      setDescription(entry.description);
+      setValue(entry.value);
+      setIsExpense(entry.isExpense); 
+      setIsOpen(true);
+    }
   }
 
   function addEntry(description, value, isExpense) {
@@ -25,10 +37,10 @@ function App() {
       id: entries.length + 1,
       description,
       value,
-      isExpense
+      isExpense,
     });
 
-    setEntries(result); 
+    setEntries(result);
   }
 
   return (
@@ -42,7 +54,12 @@ function App() {
 
       {/* <EntryLine description={entries[0].description} value={entries[0].value} isExpense={entries[0].isExpense} /> */}
 
-      <EntryLines entries={entries} deleteEntry={deleteEntry} setIsOpen={setIsOpen}/>
+      <EntryLines
+        entries={entries}
+        deleteEntry={deleteEntry}
+        setIsOpen={setIsOpen}
+        editEntry={editEntry}
+      />
 
       {/* <EntryLine description="Expense" value="5,00" isExpense={true}/> */}
 
@@ -58,7 +75,17 @@ function App() {
         setIsExpense={setIsExpense}
       />
 
-      <ModalEdit isOpen={isOpen} setIsOpen={setIsOpen}/>
+      <ModalEdit
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        addEntry={addEntry}
+        description={description}
+        value={value}
+        isExpense={isExpense}
+        setDescription={setDescription}
+        setValue={setValue}
+        setIsExpense={setIsExpense}
+      />
     </Container>
   );
 }

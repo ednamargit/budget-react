@@ -5,7 +5,7 @@ function EntryLine(
   //Destructuring all values from inside that entry at once
   // { entry:
   //   { id, description, value, isExpense = false, deleteEntry }}
-    { id, description, value, isExpense = false, deleteEntry, setIsOpen }) {
+    { id, description, value, isExpense = false, deleteEntry, setIsOpen, editEntry }) {
   
   
   return (
@@ -20,7 +20,7 @@ function EntryLine(
             {value}
           </Grid.Column>
           <Grid.Column width={5}>
-            <Icon name="edit" bordered onClick={()=>setIsOpen(true)}></Icon>
+            <Icon name="edit" bordered onClick={()=>editEntry(id)}></Icon>
             <Icon name="trash" bordered onClick={() => deleteEntry(id)}></Icon>
           </Grid.Column>
         </Grid.Row>
