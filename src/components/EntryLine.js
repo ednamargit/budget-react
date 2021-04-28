@@ -1,13 +1,17 @@
 import React, { Fragment } from 'react';
 import { Grid, Icon, Segment } from 'semantic-ui-react';
+import { useDispatch } from 'react-redux'; 
+import { removeEntryRedux } from '../actions/entries.actions';
 
 function EntryLine(
   //Destructuring all values from inside that entry at once
   // { entry:
   //   { id, description, value, isExpense = false, deleteEntry }}
-    { id, description, value, isExpense = false, deleteEntry, setIsOpen, editEntry }) {
+    { id, description, value, isExpense = false, setIsOpen, editEntry }) {
   
   
+  const dispatch = useDispatch(); 
+
   return (
   <Fragment>
     <Segment color={isExpense ? 'red' : 'green'}>
@@ -21,7 +25,7 @@ function EntryLine(
           </Grid.Column>
           <Grid.Column width={5}>
             <Icon name="edit" bordered onClick={()=>editEntry(id)}></Icon>
-            <Icon name="trash" bordered onClick={() => deleteEntry(id)}></Icon>
+            <Icon name="trash" bordered onClick={() => dispatch(removeEntryRedux(id))}></Icon>
           </Grid.Column>
         </Grid.Row>
       </Grid>
